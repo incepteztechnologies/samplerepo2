@@ -1,15 +1,3 @@
-#Bread & Butter1 program
-#Resources to Refer for learning Spark SQL - /home/hduser/install/iz_workouts/handson.pdf, ppt (Spark SQL), spark_sql_EL_BB1.py (priority2), spark_sql_ETL_BB2.py (vvv important bread and butter)
-#Documentation Reference:
-#https://spark.apache.org/docs/3.2.1/sql-data-sources-csv.html
-#Code Documentation ref?
-#/usr/local/spark/python/pyspark/rdd.py
-#/usr/local/spark/python/pyspark/sql/session.py
-#/usr/local/spark/python/pyspark/sql/readwriter.py
-#/usr/local/spark/python/pyspark/sql/functions.py
-#/usr/local/spark/python/pyspark/sql/types.py
-#/usr/local/spark/python/pyspark/sql/column.py
-
 #How we are going to learn Spark SQL (EL/ETL/ELT):
 #HOW to write a typical spark application
 #Writing main method, check for for name==main, pass params to the main method, instantiate spark session object .....
@@ -52,7 +40,7 @@ hiveContext=HiveContext(sc)#50 -> 1000+50
 
 #Modern Way
 from pyspark.sql.session import SparkSession
-spark=SparkSession.builder.appName("WD32 Bread and Butter App1").config("spark.sql.shuffle.partitions","10")\
+spark=SparkSession.builder.appName("BB1 program").config("spark.sql.shuffle.partitions","10")\
     .master("local[2]").enableHiveSupport().getOrCreate()
 sc=spark.sparkContext#for spark sql program, sc is indirectly used
 
