@@ -10,11 +10,6 @@ spark=SparkSession.builder.appName("BB1 program").config("spark.sql.shuffle.part
     .master("local[2]").enableHiveSupport().getOrCreate()
 sc=spark.sparkContext#for spark sql program, sc is indirectly used
 
-#1. (not much important) how to create (representation) dataframes from RDD using named list/reflection (Row object)
-# (not preferred much (unless inevitable)/least bothered/not much important because we preferably create direct DF rather than RDD) and
-
-#How to convert an rdd to dataframe with all possibilities using list option? Not so much important, because we don't create rdd initially to convert to df until it is in evitable
-
 #1. Create an RDD, Iterate on every rdd1 of rdd, split using the delimiter,
 rdd1=sc.textFile("file:///home/hduser/sparkdata/nyse.csv")
 split_rdd2=rdd1.map(lambda x:x.split("-"))
