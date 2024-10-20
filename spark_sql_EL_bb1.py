@@ -1,33 +1,3 @@
-#Overview of this module - spark_sql_EL_bb1.py start
-#1. how to create dataframes from RDD using named list/reflection (Row object) (not preferred much (unless inevitable)/least bothered/not much important because we preferably create direct DF rather than RDD) and
-#2. how to create DF from different (builtin) sources by inferring the schema automatically or manually defining the schema (very important)
-#3. how to store the transformed data to targets(builtin) Very Important
-#spark_sql_EL_bb1.py end
-
-#spark_sql_ETL_bb2.py (vvv important) start
-#4. how to apply transformations using DSL(DF) and SQL(view) (main portition level 1)
-#5. how to create pipelines using different data processing techniques by connecting with different sources/targets (main portition  level 2)
-#above and beyond (Developed/Worked)
-#6. how to Standardize/Modernization the code and how create/consume generic/reusable functions & frameworks (level 3)
-# - Testing (Unit, Peer Review, SIT/Integration, Regression, User Acceptance Testing), Masking engine,
-# Reusable transformation(munge_data, optimize_performance), (Self Served Data enablement) Data movement automation engine (RPA),
-# Quality suite/Data Profiling/Audit engine (Reconcilation) (Audit framework), Data/process Observability
-#spark_sql_ETL_2.py end
-
-#7. how to the terminologies/architecture/submit jobs/monitor/log analysis/packaging and deployment ...
-#8. performance tuning
-#After we get some grip on Cloud platform
-#9. Deploying spark applications in Cloud
-#10. Creating cloud pipelines using spark SQL programs
-
-#HOW to write a typical spark application?
-#Creating SC + SQLContext + HiveContext or session?
-
-#Legacy Way
-#when we create spark session object in the name of spark (it comprise of sparkcontext, sqlcontext, hivecontext)
-#where we need spark context - to write rdd programs (manually or automatically)
-#where we need sql context - to write dsl/sql queries
-#where we need hive context - to write hql queries
 from pyspark import *
 from pyspark.sql import *
 sc=SparkContext()#1000 loc (i will run rdd programs directly or what ever spark sql/hql provides)
