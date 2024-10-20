@@ -10,10 +10,6 @@ spark=SparkSession.builder.appName("BB1 program").config("spark.sql.shuffle.part
     .master("local[2]").enableHiveSupport().getOrCreate()
 sc=spark.sparkContext#for spark sql program, sc is indirectly used
 
-
-
-####1. creating DF from rdd - starts here######
-
 #1. (not much important) how to create (representation) dataframes from RDD using named list/reflection (Row object)
 # (not preferred much (unless inevitable)/least bothered/not much important because we preferably create direct DF rather than RDD) and
 
