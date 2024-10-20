@@ -1,7 +1,3 @@
-#How we are going to learn Spark SQL (EL/ETL/ELT):
-#HOW to write a typical spark application
-#Writing main method, check for for name==main, pass params to the main method, instantiate spark session object .....
-
 #Overview of this module - spark_sql_EL_bb1.py start
 #1. how to create dataframes from RDD using named list/reflection (Row object) (not preferred much (unless inevitable)/least bothered/not much important because we preferably create direct DF rather than RDD) and
 #2. how to create DF from different (builtin) sources by inferring the schema automatically or manually defining the schema (very important)
@@ -55,7 +51,7 @@ sc=spark.sparkContext#for spark sql program, sc is indirectly used
 
 #1. Create an RDD, Iterate on every rdd1 of rdd, split using the delimiter,
 rdd1=sc.textFile("file:///home/hduser/sparkdata/nyse.csv")
-split_rdd2=rdd1.map(lambda x:x.split("~"))
+split_rdd2=rdd1.map(lambda x:x.split("-"))
 
 #2. Iterate on every splitted elements apply the respective, datatype to get the SchemaRDD
 schema_rdd3=split_rdd2.map(lambda x:(str(x[0]),str(x[1]),float(x[2])))
