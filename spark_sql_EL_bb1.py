@@ -56,11 +56,6 @@ split_rdd2=rdd1.map(lambda x:x.split("-"))
 #2. Iterate on every splitted elements apply the respective, datatype to get the SchemaRDD
 schema_rdd3=split_rdd2.map(lambda x:(str(x[0]),str(x[1]),float(x[2])))
 
-#stop working on RDD functions, ASAP represent rdd as dataframe further, to simplify the operation performed on the data
-#Below dfs will not have specific column names but datatypes are specified using (schema rdd)
-datatype_df1=spark.createDataFrame(schema_rdd3)
-datatype_df2=schema_rdd3.toDF()
-
 #In the above dataframe we don't have column names, lets define column names also using 2 methodologies (1. using list of columns, 2. using concept of reflection)
 #3. Create column list as per the the structure of data
 col_list=["name","stock","price"]
