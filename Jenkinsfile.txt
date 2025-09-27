@@ -1,20 +1,42 @@
 pipeline {
-  agent any
-  environment {
-    CLOUDSDK_CORE_PROJECT='deai-2025'
-    CLIENT_EMAIL='wd34-sa@deai-2025.iam.gserviceaccount.com'
-    GCLOUD_CREDS=credentials('deai-project-id')
-  }
-  stages {
-    stage('copy_to_gcp') {
-      steps {
-        sh '''
-          ls -lrt
-          gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
-          gsutil cp *.py gs://com-data-learn1-we45-2/
-          echo 'File Copied into GCS bucket'
-        '''
-      }
+    agent any
+
+    environment {
+        PROJECT_ID = 'deai-2025'                       // Your GCP project ID
+        BUCKET_NAME = 'gsh-bucket'                     // Your target GCS bucket
+        GCLOUD_BIN = 'C:\\Users\\moham\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\' // Path to SDK
     }
-  }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/incepteztechnologies/samplerepo2.git'
+            }
+        }
+
+        stage('Upload to GCS') {
+            steps {
+                // Use the service account key stored in Jenkins credentials
+                withCredentials([file(credentialsId: 'deai-project-id', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    bat """
+                        REM Add gcloud to PATH
+                        set PATH=${GCLOUD_BIN};%PATH%
+
+                        REM Upload all files from workspace to GCS using service account
+                        "%GCLOUD_BIN%\\gsutil.cmd" -o "Credentials:gs_service_key_file=%GOOGLE_APPLICATION_CREDENTIALS%" cp -r * gs://%BUCKET_NAME%/
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Files uploaded successfully to gs://%BUCKET_NAME%/"
+        }
+        failure {
+            echo "Upload failed. Check Jenkins logs for details."
+        }
+    }
 }
