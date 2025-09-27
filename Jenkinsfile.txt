@@ -1,9 +1,9 @@
 pipeline {
   agent any
   environment {
-    CLOUDSDK_CORE_PROJECT='civil-dolphin-435905-g2'
-    CLIENT_EMAIL='gcs-sa@civil-dolphin-435905-g2.iam.gserviceaccount.com'
-    GCLOUD_CREDS=credentials('civil-dolphin-key')
+    CLOUDSDK_CORE_PROJECT='deai-2025'
+    CLIENT_EMAIL='wd34-sa@deai-2025.iam.gserviceaccount.com'
+    GCLOUD_CREDS=credentials('deai.json')
   }
   stages {
     stage('copy_to_gcp') {
@@ -11,7 +11,7 @@ pipeline {
         sh '''
           ls -lrt
           gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
-          gsutil cp *.py gs://iz-test-sample1/
+          gsutil cp *.py gs://com-data-learn1-we45-2/
           echo 'File Copied into GCS bucket'
         '''
       }
