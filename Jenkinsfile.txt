@@ -3,7 +3,7 @@ pipeline {
   environment {
     CLOUDSDK_CORE_PROJECT='deai-2025'
     CLIENT_EMAIL='wd34-sa@deai-2025.iam.gserviceaccount.com'
-    GCLOUD_CREDS=credentials('deai.json')
+    GCLOUD_CREDS=credentials('deai-project-id')
   }
   stages {
     stage('copy_to_gcp') {
