@@ -1,5 +1,5 @@
 #Refer python_theory/notes for understanding few basics of python...
-
+#sample1
 print("************** 1. Basics of Python Programing*************")
 print("How to run a python program")
 #right click this module tab and run the program or go to run menu and run or click on the play button in the right top
