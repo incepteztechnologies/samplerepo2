@@ -1,5 +1,6 @@
 
 #Function Based Programming
+#sample1
 print("What is FBP & Why FBP is needed")
 # Simple/elegant/high-level, rather than writing 100 lines, we can achive the same result in 1 or 2 lines code
 #Help us modularise/ create the entire application as components the code
